@@ -3,6 +3,8 @@ package com.rest.webservice.restfulwebservicess.User.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,16 +43,17 @@ public class UserController {
 	}
 
 	@PostMapping("/users")
-	public ResponseEntity<Object> createusers(@RequestBody User user) {
+	public ResponseEntity<Object> createusers(@Valid @RequestBody User user) {
 		User saveuser = service.save(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(saveuser.getId())
 				.toUri();
 		return ResponseEntity.created(location).build();
 	}
+
 	@DeleteMapping("/users/{id}")
-	public User deleteUsers(@PathVariable int id) {
-		User user=service.DeleteByID(id);
-		if(user==null) {
+	public User deleteUsers(@Valid @PathVariable int id) {
+		User user = service.DeleteByID(id);
+		if (user == null) {
 			throw new UserNotFoundException("Id-" + id);
 		}
 		return user;
