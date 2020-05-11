@@ -1,0 +1,18 @@
+@PostMapping("/users")
+	public ResponseEntity<Object> createusers(@RequestBody User user) {
+		User saveuser = service.save(user);
+		/*
+		 * ServletUriComponentsBuilder extends UriComponentsBuilder with additional
+		 * static factory methods to create links based on the current
+		 * HttpServletRequest
+		 * fromCurrentRequest :- except the request is obtained through {@link RequestContextHolder}
+		 */		
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
+				buildAndExpand(saveuser.getId()).toUri();
+		/*
+		 * ResponseEntity basically a extension of http entity however the additional
+		 * thing is you can actually return a state code back
+		 */
+		System.out.println(location);
+		return ResponseEntity.created(location).build();
+	}
