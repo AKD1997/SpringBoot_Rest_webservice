@@ -22,14 +22,18 @@ public class UserController {
 	@GetMapping("/users")
 	public List<User> retriveAllUsers() {
 		List<User> user = service.FindAll();
-		
+		if (user == null) {
+			throw new UserNotFoundException("User" + user);
+		}
 		return user;
 	}
 
 	@GetMapping("/users/{id}")
 	public User retriveuser(@PathVariable int id) {
 		User user = service.findOne(id);
-		
+		if (user == null) {
+			throw new UserNotFoundException("Id-" + id);
+		}
 		return user;
 	}
 
@@ -41,7 +45,9 @@ public class UserController {
 	@DeleteMapping("/users/{id}")
 	public User deleteUsers(@PathVariable int id) {
 		User user=service.DeleteByID(id);
-		
+		if(user==null) {
+			throw new UserNotFoundException("Id-" + id);
+		}
 		return user;
 	}
 }
