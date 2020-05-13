@@ -1,4 +1,5 @@
-package com.rest.webservice.restfulwebservicess.Custome.Exception;
+package com.rest.webservice.restfulwebservicess.CustomeException.model;
+
 
 import java.util.Date;
 
