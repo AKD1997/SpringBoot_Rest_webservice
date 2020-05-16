@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rest.webservice.restfulwebservicess.filter.model.Customer;
 
 @RestController
-public class CustomerControler {
+public class StaticFilterControler {
 
 	@GetMapping("/staticfilter")
 	public Customer customer() {
