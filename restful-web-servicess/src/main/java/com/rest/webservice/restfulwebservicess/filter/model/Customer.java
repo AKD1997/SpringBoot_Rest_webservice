@@ -3,12 +3,12 @@ package com.rest.webservice.restfulwebservicess.filter.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(value = { "firstname", "Secondname" })
+@JsonIgnoreProperties(value = { "firstname", "secondname" })
 public class Customer {
 	@JsonIgnore
 	private Integer id;
 	private String firstname;
-	private String Secondname;
+	private String secondname;
 	private String familyname;
 	@JsonIgnore
 	private Integer password;
@@ -17,7 +17,7 @@ public class Customer {
 		super();
 		this.id = id;
 		this.firstname = firstname;
-		this.Secondname = secondname;
+		this.secondname = secondname;
 		this.familyname = familyname;
 		this.password = password;
 	}
@@ -38,12 +38,12 @@ public class Customer {
 		this.firstname = firstname;
 	}
 
-	public String getSecondname() {
-		return Secondname;
+	public String getsecondname() {
+		return secondname;
 	}
 
-	public void setSecondname(String secondname) {
-		Secondname = secondname;
+	public void setsecondname(String secondname) {
+		this.secondname = secondname;
 	}
 
 	public String getFamilyname() {
@@ -64,7 +64,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstname=" + firstname + ", Secondname=" + Secondname + ", familyname="
+		return "Customer [id=" + id + ", firstname=" + firstname + ", secondname=" + secondname + ", familyname="
 				+ familyname + ", password=" + password + "]";
 	}
 
