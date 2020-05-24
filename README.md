@@ -1,5 +1,61 @@
 # SpringBoot_Rest_webservice
 
+## Swagger.documentation
+
+- Add Swagger Documentation dependencys
+```
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>2.4.0</version>
+</dependency>
+```
+```
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.4.0</version>
+</dependency>
+```
+**Created SwaggerConfigclass**
+
+1. Configuration SwaggerConfig class by using  ```@configuration```
+2. EnableSwagger Swagger by using ```@EnableSwagger2```
+3. Produces and Consume our endpoints in ``XML``and ```Json```  we are using ```".produces(DEFAULT_PRODUCES_AND_CONSUMES)"```,```.consumes(DEFAULT_PRODUCES_AND_CONSUMES);```
+Inside the **DEFAULT_PRODUCES_AND_CONSUMES** I provided **XML**,**JSON**
+
+```
+private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = 
+new HashSet<String>(Arrays.asList("application/json", "application/xml"));
+```
+
+- Also i provided Customize Contact in DEFAULT_Contact
+
+```
+public static final Contact DEFAULT_Contact = 
+new Contact("Amit Kumar Das","https://github.com/AKD1997/SpringBoot_Rest_webservice","akdasjob97@gmail.com");
+```
+
+- Also i have customize Api information  ```.apiInfo(DEFAULT_API_INFO)```
+
+- Here i provided the "DEFAULT_API_INFO" value
+```
+public static final ApiInfo DEFAULT_API_INFO = 
+new ApiInfo("Rest Api Resourse", "Rest Api Documentation", "1.0","urn:tos", DEFAULT_Contact, "Apache 2.0", "http://www.apache.org/licenses/LICENSE-2.0");
+```
+- Also i provider User description in ***User*** class  by using ```@apimodel```
+```
+@apimodel(description = "HERE WE CAN SEE THE USER DETAILS ")
+```
+- And also privide some notes in "name","bdayDate" by using "@ApiModelProperty".
+```
+@ApiModelProperty(notes = "Name Should have at list 4 Character")
+private String name;
+
+@ApiModelProperty(notes = "Birth date should be in the past")
+private Date bdayDate;
+```
+
 ## **Actuator and hal browser**
 
 **Spring Boot Actuator** is a sub-project of the Spring Boot Framework. It includes a number of additional features that help us to monitor and manage the Spring Boot application. It contains the actuator endpoints (the place where the resources live). We can use **HTTP** and **JMX** endpoints to manage and monitor the Spring Boot application. If we want to get production-ready features in an application, we should use the **Spring Boot actuator**.
