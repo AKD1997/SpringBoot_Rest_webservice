@@ -1,6 +1,6 @@
 # SpringBoot_Rest_webservice
 
-**Dynamic filtering**
+### **Dynamic filtering**
 
 >What is Dynamic filtering ?
 
@@ -26,7 +26,7 @@ In ```SimpleBeanPropertyFilter``` there is a another method ``` filterOutAllExce
 ```
 SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter .filterOutAllExcept("firstname", "id");
 ```
-**Implementing Basic Authentication**
+### **Implementing Basic Authentication**
 
 Spring Boot Security dependency is added on the classpath, Spring Boot application automatically requires the Basic Authentication for all HTTP Endpoints. The Endpoint “/” and “/home” does not require any authentication. All other Endpoints require authentication.
 
