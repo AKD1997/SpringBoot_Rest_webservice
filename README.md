@@ -1,6 +1,34 @@
 # SpringBoot_Rest_webservice
 
-### **Dynamic filtering**
+## **Filtering**
+### **1. Static filtering**
+>What is Static filtering ?
+
+**Ex:** I'm sending a get request to application i'm geeting a response back with **(id,name,secondname)**.Let say i don't want to see the **id** to end user in that  concept is called filteging.
+Here I'm done Static_filtering by using ```(@JsonIgnore,@JsonIgnoreProperties)```
+
+Example +1
+```
+@JsonIgnoreProperties(value = { "firstname", "Secondname" })
+public class Customer {
+	private Integer id;
+	private String firstname;
+	private String Secondname;
+	private String familyname;
+```
+
+Example +1
+```
+public class Customer {
+	@JsonIgnore
+	private Integer id;
+	private String firstname;
+	private String Secondname;
+	private String familyname;
+	@JsonIgnore
+	private Integer password;
+```
+### **2. Dynamic filtering**
 
 >What is Dynamic filtering ?
 
