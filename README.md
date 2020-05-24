@@ -1,5 +1,38 @@
 # SpringBoot_Rest_webservice
 
+## **Actuator and hal browser**
+
+**Spring Boot Actuator** is a sub-project of the Spring Boot Framework. It includes a number of additional features that help us to monitor and manage the Spring Boot application. It contains the actuator endpoints (the place where the resources live). We can use **HTTP** and **JMX** endpoints to manage and monitor the Spring Boot application. If we want to get production-ready features in an application, we should use the **Spring Boot actuator**.
+
+### **Enabling Spring Boot Actuator**
+
+- We can enable actuator by injecting the dependency ```spring-boot-starter-actuator``` in the ```pom.xml``` file.
+```
+<dependency>
+  	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+- To look at the services which are provided we actuator in a browser so we add
+```"spring-data-rest-hal-browser"``` depenancy
+```
+<dependency>
+	<groupId>org.springframework.data</groupId>
+	<artifactId>spring-data-rest-hal-browser</artifactId>
+</dependency>
+```
+**INFO:-**
+To Add info we need configure our ```application.property``` there is a lot of stuff that actuator providedes to enable that we would need to configure property
+The way we can do by using  
+```
+management.endpoints.web.exposure.include=*
+```
+- We can see this in Browser By using 
+```
+http://localhost:8080/actuator
+http://localhost:8080/browser/index.html#/actuator
+```
+
 ## **Filtering**
 ### **1. Static filtering**
 >What is Static filtering ?
