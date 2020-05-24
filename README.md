@@ -1,4 +1,31 @@
 # SpringBoot_Rest_webservice
+
+**Dynamic filtering**
+
+>What is Dynamic filtering ?
+
+**EX:-** Some request i would send 'firstname','secondname'  and some other request  i want to send 'familyname','id' that basicaly concept of dynamic filtering.
+
+With  Dynamic filtering  we cannot configure filtering directly on the bean .we need to start configuring the filtering where they're retriving the values
+
+- The ```MappingJacksonValue``` class need constructor argument that basicaly the bean that wee are passing in `` new MappingJacksonValue(customer)``
+ ``` 
+ MappingJacksonValue mapping = new MappingJacksonValue(customer);
+ ``` 
+After Doing this I would to create a mapping jackson value for this paticular bean
+```
+mapping.setFilters(filters);
+```
+Over here you can configure the ``` "filters" ``` To configure the filters I would need to create a local variable ``"FilterProvider filters ="`` ,so we would need to now configure the filters
+
+We would want to only send  'field1', 'field2'  for that in  "FilterProvider " there is a abstract class "SimpleBeanPropertyFilter" In SimpleBeanPropertyFilter there is a (.addFilter("customerfilter", filter)) method
+```
+FilterProvider filters = new SimpleFilterProvider().addFilter("customerfilter", filter);
+```
+In ```SimpleBeanPropertyFilter``` there is a another method ``` filterOutAllExcept ```by using this we can pass our fields
+```
+SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter .filterOutAllExcept("firstname", "id");
+```
 **Implementing Basic Authentication**
 
 Spring Boot Security dependency is added on the classpath, Spring Boot application automatically requires the Basic Authentication for all HTTP Endpoints. The Endpoint “/” and “/home” does not require any authentication. All other Endpoints require authentication.
