@@ -1,4 +1,27 @@
 # SpringBoot_Rest_webservice
+**Implementing Basic Authentication**
+
+Spring Boot Security dependency is added on the classpath, Spring Boot application automatically requires the Basic Authentication for all HTTP Endpoints. The Endpoint “/” and “/home” does not require any authentication. All other Endpoints require authentication.
+
+For adding a Spring Boot Security to your Spring Boot application, we need to add the Spring Boot Starter Security dependency in our build configuration file.
+
+Maven users can add the following dependency in the pom.xml file.
+ ```  
+ <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+```
+        
+And also i enable sesurity at application.properties
+
+```
+spring.security.user.name=Amit
+```
+```
+spring.security.user.password=kumar
+```
+
 ### **What is Versioning?**
 **Ex**:- Suppose in versions_1 we have a field "name" we evolved and over a period of time we recognized the need for having a separate "Firstname" and " last name" we decided in version_2 
 
