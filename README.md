@@ -54,7 +54,7 @@ In ```SimpleBeanPropertyFilter``` there is a another method ``` filterOutAllExce
 ```
 SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter .filterOutAllExcept("firstname", "id");
 ```
-### **Implementing Basic Authentication**
+## **Implementing Basic Authentication**
 
 Spring Boot Security dependency is added on the classpath, Spring Boot application automatically requires the Basic Authentication for all HTTP Endpoints. The Endpoint “/” and “/home” does not require any authentication. All other Endpoints require authentication.
 
@@ -76,8 +76,9 @@ spring.security.user.name=Amit
 ```
 spring.security.user.password=kumar
 ```
+## **Versioning**
+> What is Versioning?
 
-### **What is Versioning?**
 **Ex**:- Suppose in versions_1 we have a field "name" we evolved and over a period of time we recognized the need for having a separate "Firstname" and " last name" we decided in version_2 
 
 _**There are 4 types of versioning**_
