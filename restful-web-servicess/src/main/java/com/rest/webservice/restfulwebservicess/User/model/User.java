@@ -1,10 +1,12 @@
 package com.rest.webservice.restfulwebservicess.User.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -20,6 +22,9 @@ public class User {
 	@Size(min = 4, message = "Name Should have at list 4 Character")
 	@ApiModelProperty(notes = "Name Should have at list 4 Character")
 	private String name;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Post>post;
 
 	@Past(message = "BirthDay always Past")
 	@ApiModelProperty(notes = "Birth date should be in the past")
@@ -58,6 +63,14 @@ public class User {
 
 	public void setBdayDate(Date bdayDate) {
 		this.bdayDate = bdayDate;
+	}
+
+	public List<Post> getPost() {
+		return post;
+	}
+
+	public void setPost(List<Post> post) {
+		this.post = post;
 	}
 
 	@Override
