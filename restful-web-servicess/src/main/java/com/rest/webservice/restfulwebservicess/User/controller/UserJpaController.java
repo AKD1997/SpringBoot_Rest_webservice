@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rest.webservice.restfulwebservicess.User.Service.PostJpaRepository;
 import com.rest.webservice.restfulwebservicess.User.Service.UserJpaRepository;
+import com.rest.webservice.restfulwebservicess.User.model.Post;
 import com.rest.webservice.restfulwebservicess.User.model.User;
 
 @RestController
@@ -26,6 +28,9 @@ public class UserJpaController {
 
 	@Autowired
 	UserJpaRepository userJpaRepository;
+
+	@Autowired
+	PostJpaRepository postJpaRepository;
 
 	@GetMapping("/Jpa/users")
 	public List<User> retriveAllUsers() {
@@ -58,4 +63,29 @@ public class UserJpaController {
 		userJpaRepository.deleteById(id);
 
 	}
+
+	@GetMapping("/Jpa/users/{id}/post")
+	public List<Post> retriveAllusers(@PathVariable int id) {
+		Optional<User> useroptional = userJpaRepository.findById(id);
+		if (!useroptional.isPresent()) {
+			throw new UserNotFoundException("Id-" + id);
+		}
+		return useroptional.get().getPost();
+	}
+
+	@PostMapping("/Jpa/users/{id}/post")
+	public ResponseEntity<Object> createpost(@Valid @PathVariable int id, @RequestBody Post post) {
+		Optional<User> useroptional = userJpaRepository.findById(id);
+		if (!useroptional.isPresent()) {
+			throw new UserNotFoundException("Id-" + id);
+		}
+
+		User user = useroptional.get();
+		post.setUser(user);
+		postJpaRepository.save(post);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId())
+				.toUri();
+		return ResponseEntity.created(location).build();
+	}
+
 }
