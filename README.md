@@ -1,5 +1,23 @@
 # SpringBoot_Rest_webservice
 
+## REST – Content Negotiation
+
+- HTTP has provisions for several mechanisms for “content negotiation” — the process of selecting the best representation for a given response when there are multiple representations available
+
+### Content-Negotiation-implementing support for xml
+
+- The fact in Rest resource are the most important things and there resources can multiple representation 
+- Here we have Add  ``` Xml ``` in Our Application. 
+
+(KEY=Accept,VALU=application/xml) IN PostMan Header
+```
+<dependency>
+	<groupId>com.fasterxml.jackson.dataformat</groupId>
+	<artifactId>jackson-dataformat-xml</artifactId>
+</dependency>
+```
+Now Our Application Running both Format ``` Xml ``` and ``` json ```
+
 ## Swagger.documentation
 
 - Add Swagger Documentation dependencys
